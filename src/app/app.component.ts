@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, RoutesRecognized } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-ecomm';
+  page = '';
+  constructor(private router: Router) {
+    router.events.subscribe(event => {
+      if (event instanceof RoutesRecognized) {
+        let route = event.state.root.firstChild;
+        this.page = 'page-' + route.data.page || '';
+        console.log('Page', this.page);
+      }
+    });
+  }
+
 }
