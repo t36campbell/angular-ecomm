@@ -7,8 +7,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
-  page_title= 'Home'; 
+export class HomeComponent { 
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
       if (matches) {

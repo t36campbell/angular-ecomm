@@ -1,10 +1,14 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
     <mat-toolbar>
-      <span>Angular eComm</span>
+      <span color="primary">Angular eComm</span>
     </mat-toolbar>
     <mat-nav-list>
       <a mat-list-item [routerLink]="''">Home</a>
@@ -21,15 +25,42 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon" class="menu-icon">menu</mat-icon>
       </button>
       <app-headline></app-headline>
       <span class="fill-remaining-space"></span>
-      <mat-icon aria-hidden="false" aria-label="account" color="theme">account_circle</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="cart" color="theme">local_grocery_store</mat-icon>
+      <button 
+        type="button" 
+        aria-label="account" 
+        mat-icon-button 
+        color="theme" 
+        class="nav-icon"
+        [routerLink]="'account'"
+      >
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <button 
+        type="button" 
+        aria-label="cart" 
+        mat-icon-button 
+        color="theme" 
+        class="nav-icon"
+        [routerLink]="'cart'"
+      >
+        <mat-icon>local_grocery_store</mat-icon>
+      </button>
+      <button 
+        type="button" 
+        aria-label="theme" 
+        mat-icon-button 
+        color="theme" 
+        class="nav-icon"
+      >
+        <mat-icon>settings</mat-icon>
+      </button>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-

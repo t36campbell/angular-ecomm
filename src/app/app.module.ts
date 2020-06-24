@@ -20,6 +20,8 @@ import { StoresComponent } from './components/stores/stores.component';
 import { MemoriesComponent } from './components/memories/memories.component';
 import { HelpComponent } from './components/help/help.component';
 import { HeadlineComponent } from './components/navbar/headline/headline.component';
+import { CartComponent } from './components/cart/cart.component';
+import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { HeadlineComponent } from './components/navbar/headline/headline.compone
     StoresComponent,
     MemoriesComponent,
     HelpComponent,
-    HeadlineComponent
+    HeadlineComponent,
+    CartComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
