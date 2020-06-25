@@ -8,9 +8,9 @@
     [opened]="(isHandset$ | async) === false"
   >
     <mat-toolbar>
-      <span color="primary">Angular eComm</span>
+      <span>Angular eComm</span>
     </mat-toolbar>
-    <mat-nav-list>
+    <mat-nav-list class="nav-links">
       <a mat-list-item [routerLink]="''">Home</a>
       <a mat-list-item [routerLink]="'/products'">Products</a>
       <a mat-list-item [routerLink]="'/stores'">Store Locator</a>

@@ -7,8 +7,8 @@ import { Router, RoutesRecognized } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-ecomm';
-  page = '';
+  title: string = 'angular-ecomm';
+  page: string = '';
   constructor(private router: Router) {
     router.events.subscribe(event => {
       if (event instanceof RoutesRecognized) {

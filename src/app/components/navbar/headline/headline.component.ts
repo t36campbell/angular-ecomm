@@ -7,10 +7,8 @@ import { Router, RoutesRecognized } from '@angular/router';
   styleUrls: ['./headline.component.scss']
 })
 export class HeadlineComponent implements OnInit {
-
-  page = '';
+  page: string = '';
   constructor(private router: Router) {
-    // listen to page variable from router events
     router.events.subscribe(event => {
       if (event instanceof RoutesRecognized) {
         let route = event.state.root.firstChild;

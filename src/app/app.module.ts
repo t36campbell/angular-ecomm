@@ -22,6 +22,23 @@ import { HelpComponent } from './components/help/help.component';
 import { HeadlineComponent } from './components/navbar/headline/headline.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AccountComponent } from './components/account/account.component';
+// 1. Import the libs you need
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+// 2. Add your credentials from step 1
+const config = {
+  apiKey: "AIzaSyBCF61D4xeORu3OHhUt-BnlhmgiJ6FO8B4",
+  authDomain: "angular-ecomm-8e330.firebaseapp.com",
+  databaseURL: "https://angular-ecomm-8e330.firebaseio.com",
+  projectId: "angular-ecomm-8e330",
+  storageBucket: "angular-ecomm-8e330.appspot.com",
+  messagingSenderId: "640503341806",
+  appId: "1:640503341806:web:10670d8aba388efe8209ff",
+  measurementId: "G-BHVWT5G77Y"
+};
 
 @NgModule({
   declarations: [
@@ -38,6 +55,11 @@ import { AccountComponent } from './components/account/account.component';
   ],
   imports: [
     BrowserModule,
+    // 3. Initialize
+    AngularFireModule.initializeApp(config),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule, // storage
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
