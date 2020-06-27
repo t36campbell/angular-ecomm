@@ -1,64 +1,67 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container 
+  class="sidenav-container" 
+  [hasBackdrop]="'true'"
+  > 
   <mat-sidenav
     #drawer
     class="sidenav"
     fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
+    [attr.role]="'navigation'"
+    [mode]="'push'"
   >
-    <mat-toolbar>
+    <mat-toolbar color="primary">
       <span>Angular eComm</span>
     </mat-toolbar>
     <mat-nav-list class="nav-links">
-      <a mat-list-item [routerLink]="''">Home</a>
-      <a mat-list-item [routerLink]="'/products'">Products</a>
-      <a mat-list-item [routerLink]="'/stores'">Store Locator</a>
-      <a mat-list-item [routerLink]="'/memories'">Memories</a>
-      <a mat-list-item [routerLink]="'/help'">Help</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="''">Home</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="'/products'">Products</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="'/stores'">Store Locator</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="'/memories'">Memories</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="'/help'">Help</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
+      <a
         mat-icon-button
+        type="button"
+        color="theme"
+        class="menu-icon"
+        aria-label="Toggle sidenav"
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
       >
-        <mat-icon aria-label="Side nav toggle icon" class="menu-icon">menu</mat-icon>
-      </button>
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </a>
       <app-headline></app-headline>
       <span class="fill-remaining-space"></span>
       <button 
-        type="button" 
-        aria-label="account" 
         mat-icon-button 
+        type="button"  
         color="theme" 
         class="nav-icon"
+        aria-label="account"
         [routerLink]="'account'"
       >
-        <mat-icon>account_circle</mat-icon>
+        <mat-icon aria-label="Account icon">account_circle</mat-icon>
       </button>
       <button 
-        type="button" 
-        aria-label="cart" 
         mat-icon-button 
+        type="button" 
         color="theme" 
         class="nav-icon"
+        aria-label="cart" 
         [routerLink]="'cart'"
       >
-        <mat-icon>local_grocery_store</mat-icon>
+        <mat-icon aria-label="Cart icon">local_grocery_store</mat-icon>
       </button>
       <button 
-        type="button" 
-        aria-label="theme" 
         mat-icon-button 
+        type="button" 
         color="theme" 
-        class="nav-icon"
+        class="nav-icon-end"
+        aria-label="theme" 
       >
-        <mat-icon>settings</mat-icon>
+        <mat-icon aria-label="Settings icon">settings</mat-icon>
       </button>
     </mat-toolbar>
     <router-outlet></router-outlet>
