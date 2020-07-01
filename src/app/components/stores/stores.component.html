@@ -18,31 +18,13 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="2" [rowspan]="2">
       <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>Google Maps</mat-card-title>
-        </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <google-map
-            height="400px"
-            width="750px"
-            [center]="center"
-            [zoom]="zoom"
-            (mapClick)="addMarker($event)"
-            (mapMousemove)="move($event)"
-            (mapRightclick)="removeLastMarker()"
-          >
-            <map-marker
-              #marker
-              *ngFor="let markerPosition of markerPositions"
-              [position]="markerPosition"
-              [options]="markerOptions"
-              (mapClick)="openInfoWindow(marker)"
-            ></map-marker>
-            <map-info-window>Info Window content</map-info-window>
-          </google-map>
-
-          <div>Latitude: {{ display?.lat }}</div>
-          <div>Longitude: {{ display?.lng }}</div>
+          <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+            <agm-marker
+              [latitude]="latitude"
+              [longitude]="longitude"
+            ></agm-marker>
+          </agm-map>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

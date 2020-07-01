@@ -28,7 +28,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import {GoogleMapsModule} from '@angular/google-maps';
+import { AgmCoreModule } from '@agm/core'; //agm google maps
 
 // 2. Add your credentials from step 1
 const config = {
@@ -62,7 +62,10 @@ const config = {
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
-    GoogleMapsModule, //gmaps
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB0ZoGK_f0KbGKwHWUFD_g-xPG6EpX7H-0',
+      libraries: ['places']
+    }), //agm google maps
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
