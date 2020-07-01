@@ -1,14 +1,48 @@
 <div class="grid-container">
   <mat-grid-list cols="2" rowHeight="300px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+    <mat-grid-tile
+      *ngFor="let card of cards | async"
+      [colspan]="card.cols"
+      [rowspan]="card.rows"
+    >
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            {{card.title}}
+            {{ card.title }}
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div>Card Content Here</div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>Google Maps</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <google-map
+            height="400px"
+            width="750px"
+            [center]="center"
+            [zoom]="zoom"
+            (mapClick)="addMarker($event)"
+            (mapMousemove)="move($event)"
+            (mapRightclick)="removeLastMarker()"
+          >
+            <map-marker
+              #marker
+              *ngFor="let markerPosition of markerPositions"
+              [position]="markerPosition"
+              [options]="markerOptions"
+              (mapClick)="openInfoWindow(marker)"
+            ></map-marker>
+            <map-info-window>Info Window content</map-info-window>
+          </google-map>
+
+          <div>Latitude: {{ display?.lat }}</div>
+          <div>Longitude: {{ display?.lng }}</div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

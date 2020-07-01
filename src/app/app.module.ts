@@ -22,11 +22,13 @@ import { HelpComponent } from './components/help/help.component';
 import { HeadlineComponent } from './components/navbar/headline/headline.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AccountComponent } from './components/account/account.component';
+
 // 1. Import the libs you need
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import {GoogleMapsModule} from '@angular/google-maps';
 
 // 2. Add your credentials from step 1
 const config = {
@@ -51,7 +53,7 @@ const config = {
     HelpComponent,
     HeadlineComponent,
     CartComponent,
-    AccountComponent
+    AccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +62,7 @@ const config = {
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
+    GoogleMapsModule, //gmaps
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
