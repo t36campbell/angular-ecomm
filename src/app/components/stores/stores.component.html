@@ -2,11 +2,17 @@
   <mat-grid-list cols="2" rowHeight="300px">
     <mat-grid-tile [colspan]="1" [rowspan]="2">
       <mat-card class="dashboard-card">
-      <mat-card-content class="dashboard-card-content">
+        <mat-card-content class="dashboard-card-content">
           <div class="form-group">
-            <label>Enter address</label>
-            <button (click)="geolocate()">Use My Location</button> 
+            <mat-google-maps-autocomplete 
+              (onAutocompleteSelected)="onAutocompleteSelected($event)"
+              (onLocationSelected)="onLocationSelected($event)"
+            >
+            </mat-google-maps-autocomplete>
+            <label>Geolocate</label>
+            <button (click)="geolocate()">Use My Location</button>
           </div>
+          <div>Distance: {{ distance }}</div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -20,14 +26,15 @@
         <mat-card-content class="dashboard-card-content"> </mat-card-content>
       </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="2" *ngIf="lat && lng">
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
       <mat-card class="dashboard-card">
-        <mat-card-content class="dashboard-card-content">
+        <mat-card-content>
           <agm-map
-            id="map" 
-            [latitude]="lat" 
-            [longitude]="lng" 
-            [zoom]="zoom">
+            id="map"
+            [latitude]="currentPlace.lat"
+            [longitude]="currentPlace.lng"
+            [zoom]="zoom"
+          >
             <agm-marker
               *ngFor="let m of markers; let i = index"
               [latitude]="m.lat"
@@ -35,14 +42,15 @@
               [label]="m.label"
             >
               <agm-info-window #window>
-                <p><strong>Latitude:  </strong>{{this.m.lat}}</p>
-                <p><strong>Longitude: </strong>{{this.m.lng}}</p>
+                <p><strong>Latitude: </strong>{{ this.m.lat }}</p>
+                <p><strong>Longitude: </strong>{{ this.m.lng }}</p>
               </agm-info-window>
             </agm-marker>
             <agm-circle
-              [latitude]="lat" 
-              [longitude]="lng"
-              [radius]="5000"
+              *ngIf="radius"
+              [latitude]="currentPlace.lat"
+              [longitude]="currentPlace.lng"
+              [radius]="radius"
               [fillColor]="'red'"
             >
             </agm-circle>

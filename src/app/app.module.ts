@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; //forms
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { HomeComponent } from './components/home/home.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
@@ -29,6 +30,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AgmCoreModule } from '@agm/core'; //agm google maps
+import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete'; 
 
 // 2. Add your credentials from step 1
 const config = {
@@ -64,10 +66,10 @@ const config = {
     AngularFireStorageModule, // storage
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB0ZoGK_f0KbGKwHWUFD_g-xPG6EpX7H-0',
-      libraries: ['places']
+      libraries: ['places', 'geometry']
     }), //agm google maps
     AppRoutingModule,
-    FormsModule,
+    FormsModule, //forms
     BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,
@@ -77,7 +79,9 @@ const config = {
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule,
+    MatGoogleMapsAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
