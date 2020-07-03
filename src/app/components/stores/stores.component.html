@@ -1,6 +1,6 @@
 <div class="grid-container">
   <mat-grid-list cols="2" rowHeight="300px">
-    <mat-grid-tile [colspan]="1" [rowspan]="2">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
       <mat-card class="dashboard-card">
         <mat-card-content class="dashboard-card-content">
           <div class="form-group">
@@ -9,21 +9,22 @@
               (onLocationSelected)="onLocationSelected($event)"
             >
             </mat-google-maps-autocomplete>
-            <label>Geolocate</label>
-            <button (click)="geolocate()">Use My Location</button>
+            <div class="form-group">
+              <label>Geolocate</label>
+              <button (click)="geolocate()">Use My Location</button>
+            </div>
           </div>
-          <div>Distance: {{ distance }}</div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <mat-card class="dashboard-card">
         <mat-card-content class="dashboard-card-content"> </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card class="dashboard-card">
-        <mat-card-content class="dashboard-card-content"> </mat-card-content>
+        <ul *ngIf="showStores === true">
+          <li *ngFor="let m of storeData | async | sortBy: 'asc':'distance'">
+            {{ m.label }}-{{ m.distance }}
+          </li>
+        </ul>
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="2" [rowspan]="2">
