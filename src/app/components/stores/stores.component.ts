@@ -13,36 +13,53 @@ export class StoresComponent implements OnInit {
   currentPlace: marker;
   zoom: number;
   radius: number;
+  foods: any[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
   places: marker[] = [
     {
+      title: "New York, NY",
+      label: 'A',
       lat: 40.7060361,
       lng: -74.0088256,
-      label: 'A',
+      address: "1234 Wall Street",
     },
     {
+      title: "Maimi, FL",
+      label: 'B',
       lat: 25.7620955,
       lng: -80.1932258,
-      label: 'B',
+      address: "1234 S.Miami Avenue",
     },
     {
+      title: "Minneapolis, MN",
+      label: 'C',
       lat: 44.9750472,
       lng: -93.2503777,
-      label: 'C',
+      address: "1234 S Washington Ave",
     },
     {
+      title: "Dallas, TX",
+      label: 'D',
       lat: 32.7793704,
       lng: -96.8008565,
-      label: 'D',
+      address: "1234 Commerce Street",
     },
     {
+      title: "Seattle, WA",
+      label: 'E',
       lat: 47.6172481,
       lng: -122.3520857,
-      label: 'E',
+      address: "1234 Broad Street",
     },
     {
+      title: "Los Angeles, CA",
+      label: 'F',
       lat: 34.1015088,
       lng: -118.333556,
-      label: 'F',
+      address: "1234 Hollywood Boulevard",
     },
   ];
   markers: marker[] = [];
@@ -125,8 +142,10 @@ export class StoresComponent implements OnInit {
   };
 }
 interface marker {
+  title?: string;
+  label?: string;
   lat: number;
   lng: number;
-  label?: string;
+  address?: string;
   distance?: number;
 }

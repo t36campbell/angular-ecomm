@@ -12,7 +12,7 @@ import { CartComponent } from './components/cart/cart.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { page: 'Home' } },
   { path: 'products', component: ProductsComponent, data: { page: 'Products' } },
-  { path: 'stores', component: StoresComponent, data: { page: 'Stores' } },
+  { path: 'stores', component: StoresComponent, data: { page: 'Store Locator' } },
   { path: 'memories', component: MemoriesComponent, data: { page: 'Memories' } },
   { path: 'help', component: HelpComponent, data: { page: 'Help' } },
   { path: 'account', component: AccountComponent, data: { page: 'Account' } },

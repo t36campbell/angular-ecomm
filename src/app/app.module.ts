@@ -14,6 +14,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
 // Material Ext - google maps 
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete'; 
 // My Componenets
@@ -87,6 +89,8 @@ const config = {
     MatCardModule,
     MatMenuModule,
     MatFormFieldModule,
+    MatExpansionModule,
+    MatSelectModule,
     MatGoogleMapsAutocompleteModule,
     NgpSortModule //sort pipe
   ],
