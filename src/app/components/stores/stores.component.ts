@@ -26,6 +26,7 @@ export class StoresComponent implements OnInit {
       lat: 40.7060361,
       lng: -74.0088256,
       address: "1234 Wall Street",
+      distance: 0,
     },
     {
       title: "Maimi, FL",
@@ -33,20 +34,23 @@ export class StoresComponent implements OnInit {
       lat: 25.7620955,
       lng: -80.1932258,
       address: "1234 S.Miami Avenue",
-    },
-    {
-      title: "Minneapolis, MN",
-      label: 'C',
-      lat: 44.9750472,
-      lng: -93.2503777,
-      address: "1234 S Washington Ave",
+      distance: 1,
     },
     {
       title: "Dallas, TX",
-      label: 'D',
+      label: 'C',
       lat: 32.7793704,
       lng: -96.8008565,
       address: "1234 Commerce Street",
+      distance: 2,
+    },
+    {
+      title: "Minneapolis, MN",
+      label: 'D',
+      lat: 44.9750472,
+      lng: -93.2503777,
+      address: "1234 S Washington Ave",
+      distance: 3,
     },
     {
       title: "Seattle, WA",
@@ -54,6 +58,7 @@ export class StoresComponent implements OnInit {
       lat: 47.6172481,
       lng: -122.3520857,
       address: "1234 Broad Street",
+      distance: 4,
     },
     {
       title: "Los Angeles, CA",
@@ -61,6 +66,7 @@ export class StoresComponent implements OnInit {
       lat: 34.1015088,
       lng: -118.333556,
       address: "1234 Hollywood Boulevard",
+      distance: 5,
     },
   ];
   markers: marker[] = [];

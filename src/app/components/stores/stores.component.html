@@ -45,7 +45,6 @@
         <mat-card-content>
           <mat-accordion
             class="example-headers-align"
-            *ngIf="showStores === true"
           >
             <mat-expansion-panel
               class="panel"
@@ -63,7 +62,7 @@
                 </mat-panel-title>
                 <mat-panel-description>
                   <h4>{{ m.title }}</h4>
-                  <p>
+                  <p *ngIf="showStores === true">
                     <strong>{{ m.distance }} miles</strong>
                   </p>
                 </mat-panel-description>
