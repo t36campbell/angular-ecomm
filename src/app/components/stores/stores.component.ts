@@ -10,13 +10,14 @@ import PlaceResult = google.maps.places.PlaceResult;
 })
 export class StoresComponent implements OnInit {
   showStores: boolean;
+  showCircle: boolean;
   currentPlace: marker;
   zoom: number;
   radius: number;
-  foods: any[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
+  options: any[] = [
+    {value: 160935, viewValue: '100'},
+    {value: 804672, viewValue: '500'},
+    {value: 1609344, viewValue: '1000'}
   ];
   places: marker[] = [
     {
@@ -67,6 +68,7 @@ export class StoresComponent implements OnInit {
   storeData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([])
   ngOnInit() {
     this.showStores = false;
+    this.showCircle = false;
     this.places.forEach(m => { 
       this.markers.push(m);
     });
@@ -95,7 +97,6 @@ export class StoresComponent implements OnInit {
           this.currentPlace = newMarker;
           this.calculateDistance();
           this.zoom = 12;
-          this.radius = 5000;
         },
         (err) => {
           console.log(err);
@@ -121,7 +122,6 @@ export class StoresComponent implements OnInit {
     this.currentPlace = newMarker;
     this.calculateDistance();
     this.zoom = 12;
-    this.radius = 5000;
   };
 
   calculateDistance() {
