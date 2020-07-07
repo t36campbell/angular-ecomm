@@ -7,9 +7,10 @@
     >
       <mat-card class="dashboard-card memory-card">
         <mat-card-header>
-          <mat-card-title>
-            {{ card.title }}
-          </mat-card-title>
+          <mat-card-header>
+            <mat-icon mat-card-avatar aria-label="Account icon" class="avatar">account_circle</mat-icon>
+            <mat-card-title>{{card.title}}</mat-card-title>
+          </mat-card-header>
         </mat-card-header>
         <img mat-card-image src="{{card.img}}" alt="{{card.alt}}">
         <mat-card-actions>
@@ -24,7 +25,7 @@
               'email',
               'copy'
             ]"
-            [show]="5"
+            [show]="6"
             [url]="[card.img]"
             [autoSetMeta]="false"
           ></share-buttons>
