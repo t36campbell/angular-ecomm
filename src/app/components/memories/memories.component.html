@@ -1,15 +1,34 @@
 <div class="grid-container">
-  <mat-grid-list cols="2" rowHeight="300px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
-      <mat-card class="dashboard-card">
+  <mat-grid-list cols="3" rowHeight="300px">
+    <mat-grid-tile
+      *ngFor="let card of cards | async"
+      [colspan]="card.cols"
+      [rowspan]="card.rows"
+    >
+      <mat-card class="dashboard-card memory-card">
         <mat-card-header>
           <mat-card-title>
-            {{card.title}}
+            {{ card.title }}
           </mat-card-title>
         </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
-        </mat-card-content>
+        <img mat-card-image src="{{card.img}}" alt="{{card.alt}}">
+        <mat-card-actions>
+          <share-buttons
+            class="share-buttons"
+            [theme]="'material-dark'"
+            [include]="[
+              'facebook',
+              'twitter',
+              'pinterest',
+              'sms',
+              'email',
+              'copy'
+            ]"
+            [show]="5"
+            [url]="[card.img]"
+            [autoSetMeta]="false"
+          ></share-buttons>
+        </mat-card-actions>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>

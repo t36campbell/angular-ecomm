@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 // Material Ext - google maps 
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete'; 
+
 // My Componenets
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,6 +42,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 // AGM 
 import { AgmCoreModule } from '@agm/core';
+// Social Buttons
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 
 // Angular Config
@@ -96,7 +100,9 @@ const config = {
     MatSelectModule,
     MatSlideToggleModule,
     MatGoogleMapsAutocompleteModule,
-    NgpSortModule //sort pipe
+    NgpSortModule, //sort pipe
+    ShareButtonsModule,
+    ShareIconsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
