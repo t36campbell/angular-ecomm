@@ -24,7 +24,7 @@
               </mat-select>
             </mat-form-field>
             <div class="dashboard-card-content" fxFlex="50">
-              <mat-slide-toggle [(ngModel)]="showCircle" color="primary">
+              <mat-slide-toggle [(ngModel)]="showCircle" color="primary" [disabled]="!radius">
                 Show Radius
               </mat-slide-toggle>
             </div>
