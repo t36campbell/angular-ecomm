@@ -12,70 +12,82 @@ export class MemoriesComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Card 1', 
-            cols: 1, 
+          {
+            title: 'Bob',
+            cols: 1,
             rows: 1,
-            img: 'https://picsum.photos/400/400/?image=59' 
+            img: 'https://picsum.photos/400/400/?image=59',
           },
-          { title: 'Card 2', 
-            cols: 1, 
+          {
+            title: 'Linda',
+            cols: 1,
             rows: 1,
-            img: 'https://picsum.photos/400/400/?image=3' 
+            img: 'https://picsum.photos/400/400/?image=3',
           },
-          { title: 'Card 3', 
-            cols: 1, 
+          {
+            title: 'Gene',
+            cols: 1,
             rows: 1,
-            img: 'https://picsum.photos/400/400/?image=18' 
+            img: 'https://picsum.photos/400/400/?image=18',
           },
-          { title: 'Card 4', 
-            cols: 1, 
+          {
+            title: 'Louise',
+            cols: 1,
             rows: 1,
-            img: 'https://picsum.photos/400/400/?image=36' 
+            img: 'https://picsum.photos/400/400/?image=36',
           },
-          { title: 'Card 5', 
-            cols: 1, 
+          {
+            title: 'Teddy',
+            cols: 1,
             rows: 1,
-            img: 'https://picsum.photos/400/400/?image=72' 
+            img: 'https://picsum.photos/400/400/?image=72',
           },
-          { title: 'Card 6', 
-            cols: 1, 
+          {
+            title: 'Tina',
+            cols: 1,
             rows: 1,
-            img: 'https://picsum.photos/400/400/?image=144' 
+            img: 'https://picsum.photos/400/400/?image=144',
           },
         ];
       }
 
       return [
-        { title: 'Card 1', 
-            cols: 1, 
-            rows: 2,
-            img: 'https://picsum.photos/400/400/?image=59' 
-          },
-          { title: 'Card 2', 
-            cols: 1, 
-            rows: 2,
-            img: 'https://picsum.photos/400/400/?image=3' 
-          },
-          { title: 'Card 3', 
-            cols: 1, 
-            rows: 2,
-            img: 'https://picsum.photos/400/400/?image=18' 
-          },
-          { title: 'Card 4', 
-            cols: 1, 
-            rows: 2,
-            img: 'https://picsum.photos/400/400/?image=36' 
-          },
-          { title: 'Card 5', 
-            cols: 1, 
-            rows: 2,
-            img: 'https://picsum.photos/400/400/?image=72' 
-          },
-          { title: 'Card 6', 
-            cols: 1, 
-            rows: 2,
-            img: 'https://picsum.photos/400/400/?image=144' 
-          },
+        {
+          title: 'Bob',
+          cols: 1,
+          rows: 2,
+          img: 'https://picsum.photos/400/400/?image=59',
+        },
+        {
+          title: 'Linda',
+          cols: 1,
+          rows: 2,
+          img: 'https://picsum.photos/400/400/?image=3',
+        },
+        {
+          title: 'Gene',
+          cols: 1,
+          rows: 2,
+          img: 'https://picsum.photos/400/400/?image=18',
+        },
+        {
+          title: 'Louise',
+          cols: 1,
+          rows: 2,
+          img: 'https://picsum.photos/400/400/?image=36',
+        },
+        {
+          title: 'Teddy',
+          cols: 1,
+          rows: 2,
+          img: 'https://picsum.photos/400/400/?image=72',
+        },
+        {
+          title: 'Tina',
+          cols: 1,
+          rows: 2,
+          img: 'https://picsum.photos/400/400/?image=144',
+        },
       ];
     })
   );
