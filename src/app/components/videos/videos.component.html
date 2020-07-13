@@ -21,7 +21,7 @@
             <input matInput placeholder="CaughtOnArlo" [(value)]="searchQuery"/>
           </mat-form-field>
           <mat-form-field fxFlex="100">
-            <mat-label>Search Radius</mat-label>
+            <mat-label>Results</mat-label>
             <mat-select [(value)]="maxResults">
               <mat-option *ngFor="let i of options" [value]="i.value">
                 {{i.viewValue}}

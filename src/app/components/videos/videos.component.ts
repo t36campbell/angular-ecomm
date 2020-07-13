@@ -15,12 +15,10 @@ export class VideosComponent implements OnInit {
   maxResults: Number;
   searchQuery: String;
   options: any[] = [
+    {value: 4, viewValue: '4'},
     {value: 6, viewValue: '6'},
-    {value: 12, viewValue: '12'},
-    {value: 18, viewValue: '18'},
-    {value: 24, viewValue: '24'},
-    {value: 30, viewValue: '30'},
-    {value: 36, viewValue: '36'}
+    {value: 8, viewValue: '8'},
+    {value: 10, viewValue: '10'}
   ];
   constructor(
     private spinner: NgxSpinnerService,
@@ -34,7 +32,7 @@ export class VideosComponent implements OnInit {
     }, 1500);
     this.videos = [];
     this.youTubeService
-      .getVideosForChannel('UCfMmZSKgLjfpDkXzpffZGBw', 12)
+      .getVideosForChannel('UCfMmZSKgLjfpDkXzpffZGBw', 6)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((list) => {
         for (let element of list['items']) {
@@ -42,7 +40,7 @@ export class VideosComponent implements OnInit {
         }
       });
     this.searchQuery = 'CaughtOnArlo';
-    this.maxResults = 18;
+    this.maxResults = 6;
   }
 
   searchVideos() {
