@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
 // Material 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,9 +19,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatInputModule } from '@angular/material/input';
 // Material Ext - google maps 
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete'; 
-
 // My Componenets
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,8 +34,7 @@ import { HelpComponent } from './components/help/help.component';
 import { HeadlineComponent } from './components/navbar/headline/headline.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AccountComponent } from './components/account/account.component';
-import { NgpSortModule } from "ngp-sort-pipe";
-
+import { VideosComponent } from './components/videos/videos.component';
 // Angular Libs
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -45,7 +45,10 @@ import { AgmCoreModule } from '@agm/core';
 // Social Buttons
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
-
+//Pipes
+import { NgpSortModule } from "ngp-sort-pipe";
+//Loading Animation
+import { NgxSpinnerModule } from "ngx-spinner";
 
 // Angular Config
 const config = {
@@ -71,22 +74,28 @@ const config = {
     HeadlineComponent,
     CartComponent,
     AccountComponent,
+    VideosComponent,
   ],
   imports: [
-    BrowserModule,
+    // Angular Libs
     AngularFireModule.initializeApp(config),
-    AngularFirestoreModule, // firestore
-    AngularFireAuthModule, // auth
-    AngularFireStorageModule, // storage
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    // AGM 
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB0ZoGK_f0KbGKwHWUFD_g-xPG6EpX7H-0',
       libraries: ['places', 'geometry']
-    }), //agm google maps
+    }),
+    // @angular
+    BrowserModule,
     AppRoutingModule,
-    FormsModule, //forms
+    FormsModule,
     BrowserAnimationsModule,
     LayoutModule,
+    HttpClientModule,
     FlexLayoutModule,
+    // Material 
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -99,8 +108,14 @@ const config = {
     MatExpansionModule,
     MatSelectModule,
     MatSlideToggleModule,
+    MatInputModule, 
+    // Material Ext - google maps 
     MatGoogleMapsAutocompleteModule,
-    NgpSortModule, //sort pipe
+    //Sort Pipe
+    NgpSortModule, 
+    // Loading Animation
+    NgxSpinnerModule, 
+    //Socail Buttons
     ShareButtonsModule,
     ShareIconsModule,
   ],
