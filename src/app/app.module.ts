@@ -20,6 +20,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 // Material Ext - google maps 
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete'; 
 // My Componenets
@@ -109,6 +111,8 @@ const config = {
     MatSelectModule,
     MatSlideToggleModule,
     MatInputModule, 
+    MatTableModule,
+    MatCheckboxModule,
     // Material Ext - google maps 
     MatGoogleMapsAutocompleteModule,
     //Sort Pipe

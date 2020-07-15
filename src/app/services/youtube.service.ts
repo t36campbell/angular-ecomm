@@ -17,8 +17,9 @@ export class YoutubeService {
       this.apiKey +
       '&channelId=' +
       channel +
-      '&order=viewCount&part=snippet&type=video,id&maxResults=' +
-      maxResults;
+      '&fields=items(id(videoId),snippet(title,channelTitle,publishedAt,description,thumbnails/medium/url))&part=snippet' +
+      '&order=viewCount&type=video,id&maxResults=' +
+      maxResults; 
     return this.http.get(url).pipe(
       map((res) => {
         return res;
@@ -31,10 +32,11 @@ export class YoutubeService {
       this.apiKey +
       '&channelId=' +
       channel +
-      '&order=viewCount&part=snippet&type=video,id&maxResults=' +
-      maxResults + 
       '&q=' + 
-      query;
+      query +
+      '&fields=items(id(videoId),snippet(title,channelTitle,publishedAt,description,thumbnails/medium/url))&part=snippet' +
+      '&order=viewCount&type=video,id&maxResults=' +
+      maxResults; 
     return this.http.get(url).pipe(
       map((res) => {
         return res;
