@@ -32,37 +32,55 @@ export class CartComponent implements OnInit {
   displayedColumns: string[] = ['select', 'pos', 'name', 'price', 'qty', 'total'];
   dataSource = new MatTableDataSource<Item>(cartItems);
   selection = new SelectionModel<Item>(true, []);
-
+  step = 0;
+  shipping: number; 
   orderTotal: number;
+  options: any[] = [
+    {value: 0, viewValue: 'Standard - $0.00'},
+    {value: 14.99, viewValue: 'Priority - $14.99'},
+    {value: 24.99, viewValue: 'Expedited - $24.99'}
+  ];
   
   ngOnInit() {
     this.orderTotal = 0;
+    this.shipping = 14.99;
     this.dataSource.data.forEach( (element) => {
       element.total = Math.round(element.price * element.qty * 100)/100;
       this.orderTotal += element.total;
     });
     this.orderTotal = Math.round(this.orderTotal * 100)/100;
+    this.orderTotal += this.shipping;
   }
-  /** Whether the number of selected elements matches the total number of rows. */
+
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
 
-  /** Selects all rows if they are post all selected; otherwise clear selection. */
   masterToggle() {
     this.isAllSelected() ?
         this.selection.clear() :
         this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
-  /** The label for the checkbox on the passed row */
   checkboxLabel(row?: Item): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.pos + 1}`;
+  }
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
   }
 
 }

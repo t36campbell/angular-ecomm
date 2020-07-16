@@ -1,8 +1,8 @@
 .grid-container {
   margin: 5%; 
   margin-top: 20px;
+  background: #f5f5f5;
 }
-
 .dashboard-card {
   position: absolute;
   top: 15px;
@@ -17,12 +17,27 @@
   -o-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
+.dashboard-card-content {
+  text-align: center;
+}
 table {
   width: 100%;
   border-radius: 3px;
   background: #f5f5f5;
 }
-
 th.mat-sort-header-sorted {
   color: black;
+}
+.panel {
+  max-height: 300px;
+  border-radius: 3px;
+  background: #f5f5f5;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -o-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.actions {
+  margin-top: 60%;
 }
