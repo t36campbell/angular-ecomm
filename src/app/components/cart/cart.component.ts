@@ -60,7 +60,7 @@ export class CartComponent implements OnInit {
   ];
   
   ngOnInit() {
-    this.shipping = 14.99
+    this.shipping = 14.99 * this.unitSelected;
     this.calculateTotal(this.unitSelected)
   }
 
@@ -97,7 +97,7 @@ export class CartComponent implements OnInit {
 
   calculateTotal(unit:number) {
     this.orderTotal = 0;
-    let shippingCost = this.shipping * unit;
+    
     let subTotal = 0;
     this.dataSource.data.forEach( (element) => {
       let price = element.price;
@@ -105,6 +105,6 @@ export class CartComponent implements OnInit {
       element.total = price * element.qty;
       subTotal += element.total;
     });
-    this.orderTotal = subTotal + shippingCost;
+    this.orderTotal = subTotal;
   }
 }

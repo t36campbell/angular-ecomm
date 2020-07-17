@@ -180,7 +180,7 @@
             <h1 fxFlex="50">Order Total</h1>
             <strong xFlex="50">
               <h1>
-                <b>{{ orderTotal | currency: currencySelected :'symbol':'3.2-2' }} </b>
+                <b>{{ orderTotal + shipping | currency: currencySelected :'symbol':'3.2-2' }} </b>
               </h1>
             </strong>
           </div>
