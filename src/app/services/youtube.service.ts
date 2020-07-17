@@ -7,10 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class YoutubeService {
-  //angular api
-  // apiKey: string = 'AIzaSyBacKtN7eOSRTQGrM9wu9ltXLc0yrD5ZO8'; 
-  // vue api
-  apiKey: string = 'AIzaSyA5-ODvORC_erNqFZ8Jrd1IAEvMmuLdiIo'; 
+  apiKey: string = 'AIzaSyBacKtN7eOSRTQGrM9wu9ltXLc0yrD5ZO8'; 
   constructor(public http: HttpClient) {}
 
   getVideosForChannel(channel, maxResults): Observable<Object> {
