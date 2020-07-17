@@ -41,7 +41,7 @@
             </ng-container>
             <ng-container matColumnDef="price">
               <th mat-header-cell *matHeaderCellDef>PRICE</th>
-              <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+              <td mat-cell *matCellDef="let element">{{ element.price | currency: currencySelected :'symbol':'2.2-2' }}</td>
             </ng-container>
             <ng-container matColumnDef="qty">
               <th mat-header-cell *matHeaderCellDef>QTY</th>
@@ -49,7 +49,7 @@
             </ng-container>
             <ng-container matColumnDef="total">
               <th mat-header-cell *matHeaderCellDef>SUBTOTAL</th>
-              <td mat-cell *matCellDef="let element">{{ element.total }}</td>
+              <td mat-cell *matCellDef="let element">{{ element.total | currency: currencySelected :'symbol':'2.2-2' }}</td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr
@@ -78,31 +78,6 @@
             >
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  <h3>Tax</h3>
-                </mat-panel-title>
-                <mat-panel-description> </mat-panel-description>
-              </mat-expansion-panel-header>
-              <mat-form-field>
-                <mat-label>Zip Code</mat-label>
-                <input matInput placeholder="Zip Code" />
-              </mat-form-field>
-              <mat-action-row>
-                <div fxLayout="row" fxFlexFill>
-                  <p fxFlex="50"></p>
-                  <button mat-button fxFlex="50" color="primary" (click)="nextStep()">
-                    Next
-                  </button>
-                </div>
-              </mat-action-row>
-            </mat-expansion-panel>
-            <mat-expansion-panel
-              class="panel"
-              [expanded]="step === 1"
-              (opened)="setStep(1)"
-              hideToggle
-            >
-              <mat-expansion-panel-header>
-                <mat-panel-title>
                   <h3>Shipping</h3>
                 </mat-panel-title>
                 <mat-panel-description> </mat-panel-description>
@@ -115,15 +90,51 @@
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-              <mat-action-row>
-                <div fxLayout="row" fxFlexFill>
-                  <button mat-button fxFlex="50" color="warn" (click)="prevStep()">
-                    Previous
-                  </button>
-                  <button mat-button fxFlex="50" color="primary" (click)="nextStep()">
+              <mat-action-row class="action-buttons" fxLayout="row" fxLayoutAlign="center space-evenly">
+                  <p fxFlex="50"></p>
+                  <button
+                    mat-button
+                    fxFlex="50"
+                    color="primary"
+                    (click)="nextStep()"
+                  >
                     Next
                   </button>
-                </div>
+              </mat-action-row>
+            </mat-expansion-panel>
+            <mat-expansion-panel
+              class="panel"
+              [expanded]="step === 1"
+              (opened)="setStep(1)"
+              hideToggle
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h3>Tax</h3>
+                </mat-panel-title>
+                <mat-panel-description> </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-form-field>
+                <mat-label>Zip Code</mat-label>
+                <input matInput placeholder="Zip Code" />
+              </mat-form-field>
+              <mat-action-row class="action-buttons" fxLayout="row" fxLayoutAlign="center space-evenly">
+                  <button
+                    mat-button
+                    fxFlex="50"
+                    color="warn"
+                    (click)="prevStep()"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    mat-button
+                    fxFlex="50"
+                    color="primary"
+                    (click)="nextStep()"
+                  >
+                    Next
+                  </button>
               </mat-action-row>
             </mat-expansion-panel>
             <mat-expansion-panel
@@ -143,34 +154,38 @@
                 <input matInput placeholder="Promo Code" />
               </mat-form-field>
 
-              <mat-action-row>
-                <div fxLayout="row" fxFlexFill>
-                  <button mat-button fxFlex="50" color="warn" (click)="prevStep()">
+              <mat-action-row class="action-buttons" fxLayout="row" fxLayoutAlign="center space-evenly">
+                  <button
+                    mat-button
+                    fxFlex="50"
+                    color="warn"
+                    (click)="prevStep()"
+                  >
                     Previous
                   </button>
-                  <button mat-button fxFlex="50" color="primary" (click)="nextStep()">
+                  <button
+                    mat-button
+                    fxFlex="50"
+                    color="primary"
+                    (click)="nextStep()"
+                  >
                     End
                   </button>
-                </div>
               </mat-action-row>
             </mat-expansion-panel>
           </mat-accordion>
         </mat-card-content>
         <mat-card-actions class="dashboard-card-content actions">
-          <div fxLayout="row" fxFlexFill>
+          <div fxLayout="row" fxLayoutAlign="space-evenly"  fxFlexFill>
             <h1 fxFlex="50">Order Total</h1>
             <strong xFlex="50">
               <h1>
-                <b>${{ orderTotal }} </b>
+                <b>{{ orderTotal | currency: currencySelected :'symbol':'3.2-2' }} </b>
               </h1>
             </strong>
           </div>
-          <div fxLayout="row" fxFlexFill>
-            <button
-              mat-raised-button
-              color="primary"
-              fxFlex="100"
-            >
+          <div fxLayout="row" fxLayoutAlign="center space-evenly"  fxFlexFill>
+            <button mat-raised-button color="primary" fxFlex="100">
               Checkout
             </button>
           </div>

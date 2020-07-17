@@ -1,7 +1,4 @@
-<mat-sidenav-container 
-  class="sidenav-container" 
-  [hasBackdrop]="'true'"
-  > 
+<mat-sidenav-container class="sidenav-container" [hasBackdrop]="'true'">
   <mat-sidenav
     #drawer
     class="sidenav"
@@ -14,10 +11,18 @@
     </mat-toolbar>
     <mat-nav-list class="nav-links">
       <a mat-list-item (click)="drawer.close()" [routerLink]="''">Home</a>
-      <a mat-list-item (click)="drawer.close()" [routerLink]="'/products'">Products</a>
-      <a mat-list-item (click)="drawer.close()" [routerLink]="'/stores'">Store Locator</a>
-      <a mat-list-item (click)="drawer.close()" [routerLink]="'/memories'">Memories</a>
-      <a mat-list-item (click)="drawer.close()" [routerLink]="'/videos'">Videos</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="'/products'"
+        >Products</a
+      >
+      <a mat-list-item (click)="drawer.close()" [routerLink]="'/stores'"
+        >Store Locator</a
+      >
+      <a mat-list-item (click)="drawer.close()" [routerLink]="'/memories'"
+        >Memories</a
+      >
+      <a mat-list-item (click)="drawer.close()" [routerLink]="'/videos'"
+        >Videos</a
+      >
       <a mat-list-item (click)="drawer.close()" [routerLink]="'/help'">Help</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -35,37 +40,56 @@
       </a>
       <app-headline></app-headline>
       <span class="fill-remaining-space"></span>
-      <button 
-        mat-icon-button 
-        type="button"  
-        color="theme" 
+      <button
+        mat-icon-button
+        type="button"
+        color="theme"
         class="nav-icon"
         aria-label="account"
         [routerLink]="'account'"
       >
         <mat-icon aria-label="Account icon">account_circle</mat-icon>
       </button>
-      <button 
-        mat-icon-button 
-        type="button" 
-        color="theme" 
+      <button
+        mat-icon-button
+        type="button"
+        color="theme"
         class="nav-icon"
-        aria-label="cart" 
+        aria-label="cart"
         [routerLink]="'cart'"
       >
         <mat-icon aria-label="Cart icon">local_grocery_store</mat-icon>
       </button>
-      <button 
-        mat-icon-button 
-        type="button" 
-        color="theme" 
-        class="nav-icon-end"
-        aria-label="theme" 
+      <button
+        mat-icon-button
+        type="button"
+        color="theme"
+        class="nav-icon"
+        aria-label="theme"
       >
-        <mat-icon aria-label="Settings icon" [matMenuTriggerFor]="settings">settings</mat-icon>
-        <mat-menu #settings="matMenu">
-          <button mat-menu-item>Item 1</button>
-          <button mat-menu-item>Item 2</button>
+        <mat-icon aria-label="Settings icon" [matMenuTriggerFor]="language"
+          >translate</mat-icon
+        >
+        <mat-menu #language="matMenu" xPosition="before">
+          <button mat-menu-item *ngFor="let i of lang" (click)="changeLang(i.value)">
+            {{ i.viewValue }}
+          </button>
+        </mat-menu>
+      </button>
+      <button
+        mat-icon-button
+        type="button"
+        color="theme"
+        class="nav-icon-end"
+        aria-label="theme"
+      >
+        <mat-icon aria-label="Settings icon" [matMenuTriggerFor]="currency" 
+          >account_balance</mat-icon
+        >
+        <mat-menu #currency="matMenu" xPosition="before">
+          <button mat-menu-item *ngFor="let i of units" (click)="changeCurrency(i.value, i.unit)">
+            {{ i.viewValue }}
+          </button>
         </mat-menu>
       </button>
     </mat-toolbar>

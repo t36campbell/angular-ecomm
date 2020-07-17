@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
-
+import { LocalizeService } from '../../services/localize.service';
 export interface Item {
   pos: number;
   name: string;
@@ -29,6 +29,24 @@ const cartItems: Item[] = [
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  languageSelected: string;
+  currencySelected: string;
+  unitSelected: number;
+  public constructor(private _localizeService: LocalizeService) {
+    this._localizeService.language$.subscribe((lang) => {
+      this.languageSelected = lang;
+      }
+    );
+    this._localizeService.currency$.subscribe((value) => {
+      this.currencySelected = value;
+      }
+    );
+    this._localizeService.unit$.subscribe((unit) => {
+      this.unitSelected = unit;
+      this.calculateTotal(this.unitSelected)
+      }
+    );
+  }
   displayedColumns: string[] = ['select', 'pos', 'name', 'price', 'qty', 'total'];
   dataSource = new MatTableDataSource<Item>(cartItems);
   selection = new SelectionModel<Item>(true, []);
@@ -42,14 +60,8 @@ export class CartComponent implements OnInit {
   ];
   
   ngOnInit() {
-    this.orderTotal = 0;
-    this.shipping = 14.99;
-    this.dataSource.data.forEach( (element) => {
-      element.total = Math.round(element.price * element.qty * 100)/100;
-      this.orderTotal += element.total;
-    });
-    this.orderTotal = Math.round(this.orderTotal * 100)/100;
-    this.orderTotal += this.shipping;
+    this.shipping = 14.99
+    this.calculateTotal(this.unitSelected)
   }
 
   isAllSelected() {
@@ -83,4 +95,16 @@ export class CartComponent implements OnInit {
     this.step--;
   }
 
+  calculateTotal(unit:number) {
+    this.orderTotal = 0;
+    let shippingCost = this.shipping * unit;
+    let subTotal = 0;
+    this.dataSource.data.forEach( (element) => {
+      let price = element.price;
+      price *= unit;
+      element.total = price * element.qty;
+      subTotal += element.total;
+    });
+    this.orderTotal = subTotal + shippingCost;
+  }
 }

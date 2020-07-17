@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { YoutubeService } from '../../services/youtube.service';
 import { NgxSpinnerService } from "ngx-spinner";
 
@@ -10,7 +8,6 @@ import { NgxSpinnerService } from "ngx-spinner";
   styleUrls: ['./videos.component.scss'],
 })
 export class VideosComponent implements OnInit {
-  unsubscribe$: Subject<boolean> = new Subject<boolean>();
   videos: any[];
   maxResults: Number;
   searchQuery: String;
@@ -21,19 +18,19 @@ export class VideosComponent implements OnInit {
     {value: 10, viewValue: '10'}
   ];
   constructor(
-    private spinner: NgxSpinnerService,
-    private youTubeService: YoutubeService
+    private _spinner: NgxSpinnerService,
+    private _youTubeService: YoutubeService
   ) {}
 
   ngOnInit() {
-    this.spinner.show();
+    this._spinner.show();
     setTimeout(() => {
-      this.spinner.hide();
+      this._spinner.hide();
     }, 1500);
     this.videos = [];
-    this.youTubeService
+    this._youTubeService
       .getVideosForChannel('UCfMmZSKgLjfpDkXzpffZGBw', 6)
-      .pipe(takeUntil(this.unsubscribe$))
+      .pipe()
       .subscribe((list) => {
         for (let element of list['items']) {
           this.videos.push(element);
@@ -44,14 +41,14 @@ export class VideosComponent implements OnInit {
   }
 
   searchVideos() {
-    this.spinner.show();
+    this._spinner.show();
     setTimeout(() => {
-      this.spinner.hide();
+      this._spinner.hide();
     }, 1500);
     this.videos = [];
-    this.youTubeService
+    this._youTubeService
       .searchVideosForChannel('UCfMmZSKgLjfpDkXzpffZGBw', this.maxResults, this.searchQuery)
-      .pipe(takeUntil(this.unsubscribe$))
+      .pipe()
       .subscribe((list) => {
         for (let element of list['items']) {
           this.videos.push(element);
