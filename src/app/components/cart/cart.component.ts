@@ -54,9 +54,9 @@ export class CartComponent implements OnInit {
   shipping: number; 
   orderTotal: number;
   options: any[] = [
-    {value: 0, viewValue: 'Standard - $0.00'},
-    {value: 14.99, viewValue: 'Priority - $14.99'},
-    {value: 24.99, viewValue: 'Expedited - $24.99'}
+    {value: 0, viewValue: 'Standard -'},
+    {value: 14.99, viewValue: 'Priority - '},
+    {value: 24.99, viewValue: 'Expedited - '}
   ];
   
   ngOnInit() {
