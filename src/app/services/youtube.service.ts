@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+//AGM config
+import { youtubeAPIKey } from "../youtube-config"
 
 @Injectable({
   providedIn: 'root',
 })
-export class YoutubeService {
-  apiKey: string = 'AIzaSyDbkhii14GC_gPbe6A3ARGLHAMSX5mP4vE'; 
-  constructor(public http: HttpClient) {}
 
+export class YoutubeService {
+  constructor(public http: HttpClient) {}
+  apiKey = youtubeAPIKey;
   getVideosForChannel(channel, maxResults): Observable<Object> {
+    
     let url =
       'https://www.googleapis.com/youtube/v3/search?key=' +
       this.apiKey +
@@ -26,6 +29,7 @@ export class YoutubeService {
     );
   }
   searchVideosForChannel(channel, maxResults, query): Observable<Object> {
+    let apiKey = youtubeAPIKey;
     let url =
       'https://www.googleapis.com/youtube/v3/search?key=' +
       this.apiKey +
