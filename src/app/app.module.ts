@@ -37,11 +37,6 @@ import { HeadlineComponent } from './components/navbar/headline/headline.compone
 import { CartComponent } from './components/cart/cart.component';
 import { AccountComponent } from './components/account/account.component';
 import { VideosComponent } from './components/videos/videos.component';
-// Angular Libs
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 // AGM 
 import { AgmCoreModule } from '@agm/core';
 // Social Buttons
@@ -51,10 +46,8 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { NgpSortModule } from "ngp-sort-pipe";
 //Loading Animation
 import { NgxSpinnerModule } from "ngx-spinner";
-//AGM config
-import { agmAPIKey } from "./agm-config"
-//Firebase config
-import { firebaseConfig } from "./firebase-config"
+//Enivorment Config
+import { config } from "./config"
 
 @NgModule({
   declarations: [
@@ -71,14 +64,9 @@ import { firebaseConfig } from "./firebase-config"
     VideosComponent,
   ],
   imports: [
-    // Angular Libs
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
-    AngularFireStorageModule,
     // AGM 
     AgmCoreModule.forRoot({
-      apiKey: agmAPIKey,
+      apiKey: config.agm,
       libraries: ['places', 'geometry']
     }),
     // @angular

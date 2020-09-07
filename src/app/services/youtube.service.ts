@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 //AGM config
-import { youtubeAPIKey } from "../youtube-config"
+import { config } from "../config"
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ import { youtubeAPIKey } from "../youtube-config"
 
 export class YoutubeService {
   constructor(public http: HttpClient) {}
-  apiKey = youtubeAPIKey;
+  apiKey = config.youtube;
   getVideosForChannel(channel, maxResults): Observable<Object> {
     
     let url =
@@ -29,7 +29,6 @@ export class YoutubeService {
     );
   }
   searchVideosForChannel(channel, maxResults, query): Observable<Object> {
-    let apiKey = youtubeAPIKey;
     let url =
       'https://www.googleapis.com/youtube/v3/search?key=' +
       this.apiKey +

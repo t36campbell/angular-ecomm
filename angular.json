@@ -32,8 +32,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "./src/app/agm-config.ts",
-              "./src/app/firebase-config.ts"
+              "./src/app/config.ts"
             ]
           },
           "configurations": {
