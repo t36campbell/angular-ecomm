@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 // Material 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,8 +33,6 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductsComponent } from './components/products/products.component';
 import { StoresComponent } from './components/stores/stores.component';
-import { MemoriesComponent } from './components/memories/memories.component';
-import { HelpComponent } from './components/help/help.component';
 import { HeadlineComponent } from './components/navbar/headline/headline.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AccountComponent } from './components/account/account.component';
@@ -46,8 +46,8 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { NgpSortModule } from "ngp-sort-pipe";
 //Loading Animation
 import { NgxSpinnerModule } from "ngx-spinner";
-//Enivorment Config
-import { config } from "./config"
+//Enviroment environment
+import { environment } from "src/environments/environment";
 
 @NgModule({
   declarations: [
@@ -56,8 +56,6 @@ import { config } from "./config"
     HomeComponent,
     ProductsComponent,
     StoresComponent,
-    MemoriesComponent,
-    HelpComponent,
     HeadlineComponent,
     CartComponent,
     AccountComponent,
@@ -66,11 +64,13 @@ import { config } from "./config"
   imports: [
     // AGM 
     AgmCoreModule.forRoot({
-      apiKey: config.agm,
+      apiKey: environment.agm,
       libraries: ['places', 'geometry']
     }),
     // @angular
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,

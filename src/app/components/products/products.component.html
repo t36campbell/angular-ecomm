@@ -1,14 +1,10 @@
 <div class="grid-container">
-  <mat-grid-list cols="4" rowHeight="300px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+  <mat-grid-list cols="6" rowHeight="180px">
+    <mat-grid-tile *ngFor="let element of elements" [colspan]="1" [rowspan]="1">
       <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            {{card.title}}
-          </mat-card-title>
-        </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
+          <h1 class="symbol">{{element.payload.doc.data().symbol}}</h1>
+          <h3 class="number">{{element.payload.doc.data().id}}</h3>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

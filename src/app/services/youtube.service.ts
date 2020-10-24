@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-//AGM config
-import { config } from "../config"
+//AGM environment
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ import { config } from "../config"
 
 export class YoutubeService {
   constructor(public http: HttpClient) {}
-  apiKey = config.youtube;
+  apiKey = environment.youtube;
   getVideosForChannel(channel, maxResults): Observable<Object> {
     
     let url =

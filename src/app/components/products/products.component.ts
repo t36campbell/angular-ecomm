@@ -1,44 +1,24 @@
-import { Component } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from '../../services/firestore.service'
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent {
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 },
-          { title: 'Card 5', cols: 1, rows: 1 },
-          { title: 'Card 6', cols: 1, rows: 1 },
-          { title: 'Card 7', cols: 1, rows: 1 },
-          { title: 'Card 8', cols: 2, rows: 2 },
-          { title: 'Card 9', cols: 1, rows: 1 },
-          { title: 'Card 10', cols: 1, rows: 1 },
-        ];
-      }
+export class ProductsComponent implements OnInit{
+  constructor(private _firestore: FirestoreService) {}
 
-      return [
-        { title: 'Card 1', cols: 2, rows: 2 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 1 },
-        { title: 'Card 4', cols: 1, rows: 1 },
-        { title: 'Card 5', cols: 1, rows: 1 },
-        { title: 'Card 6', cols: 1, rows: 1 },
-        { title: 'Card 7', cols: 1, rows: 1 },
-        { title: 'Card 8', cols: 2, rows: 2 },
-        { title: 'Card 9', cols: 1, rows: 1 },
-        { title: 'Card 10', cols: 1, rows: 1 },
-      ];
-    })
-  );
-
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  ngOnInit() {
+    this.getData();
+  }
+  elements; 
+  
+  getData() {
+      this._firestore
+        .getElements()
+        .subscribe(data => {
+          this.elements = data
+        })  
+  }    
 }
