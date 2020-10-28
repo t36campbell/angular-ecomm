@@ -2,6 +2,7 @@
 
 # private config files
 src/app/config.ts
+src/environments
 
 # compiled output
 /dist

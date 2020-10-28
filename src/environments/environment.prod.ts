@@ -10,6 +10,6 @@ export const environment = {
     appId: "1:640503341806:web:10670d8aba388efe8209ff",
     measurementId: "G-BHVWT5G77Y"
   },
-  agm: 'AIzaSyB0ZoGK_f0KbGKwHWUFD_g-xPG6EpX7H-0',
+  agm: 'AIzaSyDluWhiZdf9jk4EUDQTHbYKL63-0P40Sfs',
   youtube: 'AIzaSyBDIa4FPc-gttr-2_whuYKfvW8mEcpOUjM' , 
 };

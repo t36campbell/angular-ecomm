@@ -37,7 +37,6 @@ import { StoresComponent } from './components/stores/stores.component';
 import { HeadlineComponent } from './components/navbar/headline/headline.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AccountComponent } from './components/account/account.component';
-import { VideosComponent } from './components/videos/videos.component';
 // AGM 
 import { AgmCoreModule } from '@agm/core';
 // Social Buttons
@@ -60,7 +59,6 @@ import { environment } from "src/environments/environment";
     HeadlineComponent,
     CartComponent,
     AccountComponent,
-    VideosComponent,
   ],
   imports: [
     // AGM 
