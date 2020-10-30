@@ -1,8 +1,31 @@
 .grid-container {
   margin: 5%; 
   margin-top: 20px;
+  height: 100%;
 }
-
+.grid-list {
+  //angular material breakpoints
+  //xl
+  @media (min-width: 1910px) {
+    height: calc(1250vw  / 8);
+  }
+  //lg 
+  @media (max-width: 1919px) {
+    height: calc(1600vw / 6);
+  }
+  //md 
+  @media (max-width: 1439px) {
+    height: calc(2500vw / 4);
+  }
+  //sm 
+  @media (max-width: 1023px) {
+    height: calc(5000vw / 2);
+  } 
+  //xs
+  @media (max-width: 599px) {
+    height: 10000vw;
+  }
+}
 .dashboard-card {
   position: absolute;
   top: 15px;

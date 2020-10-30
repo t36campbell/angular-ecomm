@@ -30,7 +30,6 @@ import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/go
 // My Componenets
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductsComponent } from './components/products/products.component';
 import { StoresComponent } from './components/stores/stores.component';
@@ -48,17 +47,18 @@ import { NgpSortModule } from "ngp-sort-pipe";
 import { NgxSpinnerModule } from "ngx-spinner";
 //Enviroment environment
 import { environment } from "src/environments/environment";
+import { GridcolDirective } from './directives/gridcol.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent,
     ProductsComponent,
     StoresComponent,
     HeadlineComponent,
     CartComponent,
     AccountComponent,
+    GridcolDirective,
   ],
   imports: [
     // AGM 
