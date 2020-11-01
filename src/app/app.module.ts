@@ -48,6 +48,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 //Enviroment environment
 import { environment } from "src/environments/environment";
 import { GridcolDirective } from './directives/gridcol.directive';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { GridcolDirective } from './directives/gridcol.directive';
     //Socail Buttons
     ShareButtonsModule,
     ShareIconsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]
