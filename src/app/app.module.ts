@@ -8,6 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 // Material 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -32,6 +33,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductsComponent } from './components/products/products.component';
+import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
 import { StoresComponent } from './components/stores/stores.component';
 import { HeadlineComponent } from './components/navbar/headline/headline.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -50,6 +52,7 @@ import { environment } from "src/environments/environment";
 import { GridcolDirective } from './directives/gridcol.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +63,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     CartComponent,
     AccountComponent,
     GridcolDirective,
+    ProductDetailsComponent,
   ],
   imports: [
     // AGM 
@@ -71,6 +75,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     AngularFireAnalyticsModule,
     AppRoutingModule,
     FormsModule,

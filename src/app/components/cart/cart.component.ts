@@ -1,27 +1,11 @@
-import { Component, OnInit, SimpleChanges, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { LocalizeService } from '../../services/localize.service';
-export interface Item {
-  pos: number;
-  name: string;
-  price: number;
-  qty: number;
-  total: number;
-}
+import { CartService } from '../../services/cart.service';
+import { Item } from '../../services/item.model'
 
-const cartItems: Item[] = [
-  {pos: 1, name: 'Hydrogen', price: 19.99, qty: 3, total: null},
-  {pos: 2, name: 'Helium', price: 29.99, qty: 2, total: null},
-  {pos: 3, name: 'Lithium', price: 19.99, qty: 1, total: null},
-  {pos: 4, name: 'Beryllium', price: 39.99, qty: 3, total: null},
-  {pos: 5, name: 'Boron', price: 19.99, qty: 2, total: null},
-  {pos: 6, name: 'Carbon', price: 49.99, qty: 1, total: null},
-  {pos: 7, name: 'Nitrogen', price: 19.99, qty: 3, total: null},
-  {pos: 8, name: 'Oxygen', price: 59.99, qty: 2, total: null},
-  {pos: 9, name: 'Fluorine', price: 19.99, qty: 1, total: null},
-  {pos: 10, name: 'Neon', price: 69.99, qty: 3, total: null},
-];
+
 
 @Component({
   selector: 'app-cart',
@@ -29,14 +13,12 @@ const cartItems: Item[] = [
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  languageSelected: string;
   currencySelected: string;
   unitSelected: number;
-  public constructor(private _localizeService: LocalizeService) {
-    this._localizeService.language$.subscribe((lang) => {
-      this.languageSelected = lang;
-      }
-    );
+  public constructor(
+    private _localizeService: LocalizeService,
+    private _cartData: CartService
+    ) {
     this._localizeService.currency$.subscribe((value) => {
       this.currencySelected = value;
       }
@@ -47,8 +29,9 @@ export class CartComponent implements OnInit {
       }
     );
   }
+  cartItems: Item[] = [];
   displayedColumns: string[] = ['select', 'pos', 'name', 'price', 'qty', 'total'];
-  dataSource = new MatTableDataSource<Item>(cartItems);
+  dataSource = new MatTableDataSource<Item>(this.cartItems);
   selection = new SelectionModel<Item>(true, []);
   step = 0;
   shipping: number; 
@@ -60,7 +43,8 @@ export class CartComponent implements OnInit {
   ];
   
   ngOnInit() {
-    this.shipping = 14.99 * this.unitSelected;
+    this._cartData.currentCart.subscribe(cart => this.cartItems = cart)
+    this.shipping = 0 * this.unitSelected;
     this.calculateTotal(this.unitSelected)
   }
 

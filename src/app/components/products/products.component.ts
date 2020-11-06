@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { element } from 'protractor';
 import { FirestoreService } from '../../services/firestore.service'
 
 
@@ -16,10 +17,10 @@ export class ProductsComponent implements OnInit{
   elements; 
   
   getData() {
-      this._firestore
-        .getElements()
-        .subscribe(data => {
-          this.elements = data
-        })  
+    this._firestore
+      .getElements()
+      .subscribe(data => {
+        this.elements = data
+      })    
   }    
 }

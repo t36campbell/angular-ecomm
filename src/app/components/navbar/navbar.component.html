@@ -60,22 +60,6 @@
         mat-icon-button
         type="button"
         color="theme"
-        class="nav-icon"
-        aria-label="theme"
-      >
-        <mat-icon aria-label="Settings icon" [matMenuTriggerFor]="language"
-          >translate</mat-icon
-        >
-        <mat-menu #language="matMenu" xPosition="before">
-          <button mat-menu-item *ngFor="let i of lang" (click)="changeLang(i.value)">
-            {{ i.viewValue }}
-          </button>
-        </mat-menu>
-      </button>
-      <button
-        mat-icon-button
-        type="button"
-        color="theme"
         class="nav-icon-end"
         aria-label="theme"
       >

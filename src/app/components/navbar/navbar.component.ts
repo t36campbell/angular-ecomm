@@ -11,17 +11,9 @@ export class NavbarComponent {
   currencySelected: string = 'USD';
   unitSelected: number = 1;
   public constructor(private _localizeService: LocalizeService) {
-    this._localizeService.setLang(this.languageSelected);
     this._localizeService.setCurrency(this.currencySelected);
     this._localizeService.setUnit(this.unitSelected);
   }
-
-  lang: any[] = [
-    {value: 'en', viewValue: 'EN'},
-    {value: 'ep', viewValue: 'EP'},
-    {value: 'fr', viewValue: 'FR'},
-    {value: 'de', viewValue: 'DE'},
-  ];
   units: any[] = [
     {value: 'USD', viewValue: 'USD', unit: 1},
     {value: 'EUR', viewValue: 'EUR', unit: 0.8761170492},
