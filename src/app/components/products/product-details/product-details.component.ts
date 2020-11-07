@@ -19,9 +19,8 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
 
   details;
-  totalItems;
-  cartItems: Item[] = [];
-  qty;
+  totalItems: number = 0;
+  qty: number;
   options: any[] = [
     {value: 0},
     {value: 1},
@@ -37,22 +36,20 @@ export class ProductDetailsComponent implements OnInit {
       .getElementDetails(docId)
       .subscribe(data => {
         this.details = data
-      });
-      this._cartData.currentCart.subscribe(cart => {
-        this.cartItems = cart
-        this.totalItems - cart.length
-      })  
+      }); 
   }
 
   addItem(item, qty) {
     let total = item.atomicMass * qty;
+    this.totalItems += 1
     let newItem = {
-      pos: this.totalItems + 1,
+      pos: this.totalItems,
       name: item.element,
       price: item.atomicMass,
       qty: qty,
       total: total
     }
+    console.log('newitem', newItem)
     this._cartData.addProduct(newItem)
   }
 }
