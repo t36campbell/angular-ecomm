@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { LocalizeService } from '../../services/localize.service';
@@ -18,7 +18,8 @@ export class CartComponent implements OnInit {
   unitSelected: number;
   public constructor(
     private _localizeService: LocalizeService,
-    private _cartData: CartService
+    private _cartData: CartService,
+    private cd: ChangeDetectorRef,
     ) {
     this._localizeService.currency$.subscribe((value) => {
       this.currencySelected = value;
@@ -32,7 +33,7 @@ export class CartComponent implements OnInit {
   }
   displayedColumns: string[] = ['select', 'pos', 'name', 'price', 'qty', 'total'];
   dataSource = new MatTableDataSource<Item>();
-  selection  = new SelectionModel<Item>(true, []);
+  selection = new SelectionModel<Item>(true, []);
   step = 0;
   shipping: number; 
   orderTotal: number;
@@ -43,18 +44,25 @@ export class CartComponent implements OnInit {
   ];
   
   ngOnInit() {
+    this.connectCart()
+    console.log('cart - init', this.cart);
+    console.log('dataSource - init', this.dataSource.data);
+    this.shipping = 0 * this.unitSelected;
+    if (this.dataSource) this.calculateTotal(this.unitSelected)
+  }
+
+  connectCart() {
     this._cartData.getProduct().subscribe(item => {
       if (item) {
         this.cart.push(item);
-        this.dataSource.data = this.cart;
-        console.log('cart - init', this.cart)
-        console.log('dataSource - init', this.dataSource.data)
+        this.dataSource.data = this.cart
+        this.cd.detectChanges();
+        console.log('cart - connect', this.cart);
+        console.log('dataSource - connect', this.dataSource.data);
       } else {
         this.cart = [];
       }
-    })
-    this.shipping = 0 * this.unitSelected;
-    if (this.dataSource) this.calculateTotal(this.unitSelected)
+    });
   }
 
   isAllSelected() {

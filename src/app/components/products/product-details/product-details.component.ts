@@ -17,9 +17,9 @@ export class ProductDetailsComponent implements OnInit {
     private readonly _firestore: FirestoreService,
     private _cartData: CartService
   ) {}
-
+  
+  cart: Item[] = [];
   details;
-  totalItems: number = 0;
   qty: number;
   options: any[] = [
     {value: 0},
@@ -37,19 +37,31 @@ export class ProductDetailsComponent implements OnInit {
       .subscribe(data => {
         this.details = data
       }); 
+    this.connectCart();
   }
 
   addItem(item, qty) {
-    let total = item.atomicMass * qty;
-    this.totalItems += 1
+    let totalItems = this.cart.length + 1
     let newItem = {
-      pos: this.totalItems,
+      pos: totalItems,
       name: item.element,
       price: item.atomicMass,
       qty: qty,
-      total: total
+      total: null
     }
     console.log('newitem', newItem)
     this._cartData.addProduct(newItem)
+  }
+
+  connectCart() {
+    this._cartData.getProduct().subscribe(item => {
+      if (item) {
+        this.cart.push(item);
+        // this.cd.markForCheck();
+        console.log('product-details - connect', this.cart);
+      } else {
+        this.cart = [];
+      }
+    });
   }
 }

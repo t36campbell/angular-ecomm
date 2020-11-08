@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { ReplaySubject, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -7,7 +7,7 @@ import { Subject, Observable } from 'rxjs';
 })
 export class CartService {
 
-  private cartSource = new Subject<any>();
+  private cartSource = new ReplaySubject<any>();
 
   constructor() {}
 
