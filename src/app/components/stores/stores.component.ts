@@ -117,7 +117,7 @@ export class StoresComponent implements OnInit {
         options
       );
     }
-  }  
+  }
   onAutocompleteSelected(result: PlaceResult) {
     console.log('onAutocompleteSelected: ', result);
   }
