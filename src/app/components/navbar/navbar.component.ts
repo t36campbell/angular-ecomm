@@ -16,9 +16,9 @@ export class NavbarComponent {
   }
   units: any[] = [
     {value: 'USD', viewValue: 'USD', unit: 1},
-    {value: 'EUR', viewValue: 'EUR', unit: 0.8761170492},
-    {value: 'JPY', viewValue: 'JPY', unit: 107.0965480988},
-    {value: 'GBP', viewValue: 'GBP', unit: 0.7961713685},
+    {value: 'EUR', viewValue: 'EUR', unit: 0.828019},
+    {value: 'JPY', viewValue: 'JPY', unit: 103.790},
+    {value: 'GBP', viewValue: 'GBP', unit: 0.736137},
   ];
 
   changeLang(value: string) {

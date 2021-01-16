@@ -84,7 +84,7 @@
               </mat-expansion-panel-header>
               <mat-form-field>
                 <mat-label>Method</mat-label>
-                <mat-select [(value)]="shipping">
+                <mat-select [(ngModel)]="shipping" (selectionChange)='[saveShipping(), watchUnits()]'>
                   <mat-option *ngFor="let i of options" [value]="i.value">
                     {{ i.viewValue }} {{ i.value * unitSelected | currency: currencySelected :'symbol':'1.2-2' }} 
                   </mat-option>
@@ -116,7 +116,7 @@
               </mat-expansion-panel-header>
               <mat-form-field>
                 <mat-label>Zip Code</mat-label>
-                <input matInput placeholder="Zip Code" />
+                <input matInput placeholder="Zip Code" [(ngModel)]="zipCode" (change)='saveZip($event)'/>
               </mat-form-field>
               <mat-action-row class="action-buttons" fxLayout="row" fxLayoutAlign="center space-evenly">
                   <button
@@ -151,7 +151,7 @@
               </mat-expansion-panel-header>
               <mat-form-field>
                 <mat-label>Promo Code</mat-label>
-                <input matInput placeholder="Promo Code" />
+                <input matInput placeholder="Promo Code" [(ngModel)]="promoCode" (change)='savePromo($event)'/>
               </mat-form-field>
 
               <mat-action-row class="action-buttons" fxLayout="row" fxLayoutAlign="center space-evenly">
@@ -180,7 +180,7 @@
             <h1 fxFlex="50">Order Total</h1>
             <strong xFlex="50">
               <h1>
-                <b>{{ orderTotal + shipping | currency: currencySelected :'symbol':'1.0-2' }} </b>
+                <b>{{ orderTotal | currency: currencySelected :'symbol':'1.0-2' }} </b>
               </h1>
             </strong>
           </div>

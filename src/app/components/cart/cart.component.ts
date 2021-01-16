@@ -21,21 +21,16 @@ export class CartComponent implements OnInit {
     private cartData: CartService,
     private cd: ChangeDetectorRef,
     ) {
-    this.localizeService.currency$.subscribe((value) => {
-      this.currencySelected = value;
-      }
-    );
-    this.localizeService.unit$.subscribe((unit) => {
-      this.unitSelected = unit;
-      if (this.dataSource) { this.calculateTotal(this.unitSelected); }
-      }
-    );
+    this.watchCurrency();
+    this.watchUnits();
   }
   displayedColumns: string[] = ['select', 'pos', 'name', 'price', 'qty', 'total'];
   dataSource = new MatTableDataSource<Item>();
   selection = new SelectionModel<Item>(true, []);
   step = 0;
   shipping: number;
+  zipCode: number;
+  promoCode: string;
   orderTotal: number;
   options: any[] = [
     {value: 0, viewValue: 'Standard -'},
@@ -45,10 +40,25 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.connectCart();
-    console.log('cart - init', this.cart);
-    console.log('dataSource - init', this.dataSource.data);
-    this.shipping = 0 * this.unitSelected;
+    localStorage.shipping ? this.shipping = Number(localStorage.shipping) : this.shipping = 0;
+    localStorage.zipCode ? this.zipCode = Number(localStorage.zipCode) : this.zipCode = null ;
+    localStorage.getItem('promoCode') ? this.promoCode = JSON.parse(localStorage.getItem('promoCode')) : this.promoCode = null;
     if (this.dataSource) { this.calculateTotal(this.unitSelected); }
+  }
+
+  watchCurrency() {
+    this.localizeService.currency$.subscribe((value) => {
+      this.currencySelected = value;
+      }
+    );
+  }
+
+  watchUnits() {
+    this.localizeService.unit$.subscribe((unit) => {
+      this.unitSelected = unit;
+      this.calculateTotal(this.unitSelected);
+      }
+    );
   }
 
   connectCart() {
@@ -57,8 +67,6 @@ export class CartComponent implements OnInit {
         this.cart.push(item);
         this.dataSource.data = this.cart;
         this.cd.detectChanges();
-        console.log('cart - connect', this.cart);
-        console.log('dataSource - connect', this.dataSource.data);
       } else {
         this.cart = [];
       }
@@ -103,7 +111,7 @@ export class CartComponent implements OnInit {
   calculateTotal(unit: number) {
     if (this.dataSource) {
       this.orderTotal = 0;
-      let subTotal = 0;
+      let subTotal = this.shipping * unit;
       this.dataSource.data.forEach( (element) => {
         let price = element.price;
         price *= unit;
@@ -112,5 +120,17 @@ export class CartComponent implements OnInit {
       });
       this.orderTotal = subTotal;
     }
+  }
+
+  saveShipping() {
+    localStorage.shipping = this.shipping;
+  }
+  saveZip(event) {
+    this.zipCode = event.target.value;
+    localStorage.zipCode = this.zipCode;
+  }
+  savePromo(event) {
+    this.promoCode = event.target.value;
+    localStorage.setItem('promoCode', JSON.stringify(this.promoCode));
   }
 }

@@ -10,7 +10,7 @@ export interface GridColumns {
   xl: number;
 }
 @Directive({
-  selector: '[appGridCols]'
+  selector: '[gridCols]'
 })
 export class GridcolDirective implements OnInit {
   private gridCols: GridColumns = {xs: 1, sm: 2, md: 4, lg: 6, xl: 8};

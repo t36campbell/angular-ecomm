@@ -49,7 +49,6 @@ export class ProductDetailsComponent implements OnInit {
       qty,
       total: null
     };
-    console.log('newitem', newItem);
     this.cartData.addProduct(newItem);
   }
 
@@ -57,8 +56,6 @@ export class ProductDetailsComponent implements OnInit {
     this.cartData.getProduct().subscribe(item => {
       if (item) {
         this.cart.push(item);
-        // this.cd.markForCheck();
-        console.log('product-details - connect', this.cart);
       } else {
         this.cart = [];
       }

@@ -15,6 +15,7 @@ import { switchMap } from 'rxjs/operators';
 export class AuthService {
 
   user$: Observable<User>;
+  redirectUrl: string;
 
   constructor(
     private auth: AngularFireAuth,
@@ -39,7 +40,6 @@ export class AuthService {
   }
 
   private updateUserData(user) {
-    // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${user.uid}`);
 
     const data = {
@@ -48,9 +48,13 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL
     };
-
     return userRef.set(data, { merge: true });
 
+  }
+
+  async signIn() {
+    await this.googleSignin();
+    this.router.navigate([this.redirectUrl]);
   }
 
   async signOut() {

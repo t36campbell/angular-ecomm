@@ -1,5 +1,5 @@
 <div class="grid-container">
-  <mat-grid-list [appGridCols] rowHeight="fit" class="grid-list">
+  <mat-grid-list [gridCols] rowHeight="fit" class="grid-list">
     <mat-grid-tile *ngFor="let element of elements" [colspan]="1" [rowspan]="1">
       <mat-card class="dashboard-card" [routerLink] = "['/products', element.docId]">
         <mat-card-content class="dashboard-card-content">
