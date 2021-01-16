@@ -7,12 +7,12 @@ import { LocalizeService } from '../../services/localize.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  languageSelected: string = 'en';
-  currencySelected: string = 'USD';
-  unitSelected: number = 1;
-  public constructor(private _localizeService: LocalizeService) {
-    this._localizeService.setCurrency(this.currencySelected);
-    this._localizeService.setUnit(this.unitSelected);
+  languageSelected = 'en';
+  currencySelected = 'USD';
+  unitSelected = 1;
+  public constructor(private localizeService: LocalizeService) {
+    this.localizeService.setCurrency(this.currencySelected);
+    this.localizeService.setUnit(this.unitSelected);
   }
   units: any[] = [
     {value: 'USD', viewValue: 'USD', unit: 1},
@@ -23,12 +23,12 @@ export class NavbarComponent {
 
   changeLang(value: string) {
     this.languageSelected = value;
-    this._localizeService.setLang(this.languageSelected);
+    this.localizeService.setLang(this.languageSelected);
   }
   changeCurrency(value: string, unit: number) {
-    this.currencySelected= value;
-    this.unitSelected= unit;
-    this._localizeService.setCurrency(this.currencySelected);
-    this._localizeService.setUnit(this.unitSelected);
+    this.currencySelected = value;
+    this.unitSelected = unit;
+    this.localizeService.setCurrency(this.currencySelected);
+    this.localizeService.setUnit(this.unitSelected);
   }
 }

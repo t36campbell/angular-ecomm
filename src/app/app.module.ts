@@ -6,11 +6,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFireModule } from "@angular/fire";
-import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
-// Material 
+// Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -26,8 +26,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-// Material Ext - google maps 
-import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete'; 
+// Material Ext - google maps
+import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 // My Componenets
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,17 +38,17 @@ import { StoresComponent } from './components/stores/stores.component';
 import { HeadlineComponent } from './components/navbar/headline/headline.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AccountComponent } from './components/account/account.component';
-// AGM 
+// AGM
 import { AgmCoreModule } from '@agm/core';
 // Social Buttons
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
-//Pipes
-import { NgpSortModule } from "ngp-sort-pipe";
-//Loading Animation
-import { NgxSpinnerModule } from "ngx-spinner";
-//Enviroment environment
-import { environment } from "src/environments/environment";
+// Pipes
+import { NgpSortModule } from 'ngp-sort-pipe';
+// Loading Animation
+import { NgxSpinnerModule } from 'ngx-spinner';
+// Enviroment environment
+import { environment } from 'src/environments/environment';
 import { GridcolDirective } from './directives/gridcol.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -66,7 +66,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     ProductDetailsComponent,
   ],
   imports: [
-    // AGM 
+    // AGM
     AgmCoreModule.forRoot({
       apiKey: environment.agm,
       libraries: ['places', 'geometry']
@@ -83,7 +83,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     LayoutModule,
     HttpClientModule,
     FlexLayoutModule,
-    // Material 
+    // Material
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -96,16 +96,16 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     MatExpansionModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatInputModule, 
+    MatInputModule,
     MatTableModule,
     MatCheckboxModule,
-    // Material Ext - google maps 
+    // Material Ext - google maps
     MatGoogleMapsAutocompleteModule,
-    //Sort Pipe
-    NgpSortModule, 
+    // Sort Pipe
+    NgpSortModule,
     // Loading Animation
-    NgxSpinnerModule, 
-    //Socail Buttons
+    NgxSpinnerModule,
+    // Socail Buttons
     ShareButtonsModule,
     ShareIconsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),

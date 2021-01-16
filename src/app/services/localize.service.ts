@@ -8,14 +8,14 @@ export class LocalizeService {
   language$: Observable<any>;
   currency$: Observable<any>;
   unit$: Observable<any>;
-  private languageSubject = new BehaviorSubject<any>("");
-  private currencySubject = new BehaviorSubject<any>("");
-  private unitSubject = new BehaviorSubject<any>("");
+  private languageSubject = new BehaviorSubject<any>('');
+  private currencySubject = new BehaviorSubject<any>('');
+  private unitSubject = new BehaviorSubject<any>('');
 
   constructor() {
-      this.language$= this.languageSubject.asObservable();
-      this.currency$= this.currencySubject.asObservable();
-      this.unit$= this.unitSubject.asObservable();
+      this.language$ = this.languageSubject.asObservable();
+      this.currency$ = this.currencySubject.asObservable();
+      this.unit$ = this.unitSubject.asObservable();
   }
 
   setLang(lang: string) {

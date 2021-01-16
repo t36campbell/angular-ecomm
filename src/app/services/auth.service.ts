@@ -13,14 +13,14 @@ import { switchMap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  
+
   user$: Observable<User>;
-  
+
   constructor(
     private auth: AngularFireAuth,
     private db: AngularFirestore,
     private router: Router
-  ) { 
+  ) {
     this.user$ = this.auth.authState.pipe(
       switchMap(user => {
         if (user) {
@@ -29,7 +29,7 @@ export class AuthService {
           return of(null);
         }
       })
-    )
+    );
   }
 
   async googleSignin() {
@@ -42,14 +42,14 @@ export class AuthService {
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${user.uid}`);
 
-    const data = { 
-      uid: user.uid, 
-      email: user.email, 
-      displayName: user.displayName, 
+    const data = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
       photoURL: user.photoURL
-    } 
+    };
 
-    return userRef.set(data, { merge: true })
+    return userRef.set(data, { merge: true });
 
   }
 

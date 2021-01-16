@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { element } from 'protractor';
-import { FirestoreService } from '../../services/firestore.service'
+import { FirestoreService } from '../../services/firestore.service';
 
 
 @Component({
@@ -9,18 +9,18 @@ import { FirestoreService } from '../../services/firestore.service'
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit{
-  constructor(private _firestore: FirestoreService, ) {}
+  constructor(private firestore: FirestoreService, ) {}
+  elements;
 
   ngOnInit() {
     this.getData();
   }
-  elements; 
-  
+
   getData() {
-    this._firestore
+    this.firestore
       .getElements()
       .subscribe(data => {
-        this.elements = data
-      })    
-  }    
+        this.elements = data;
+      });
+  }
 }

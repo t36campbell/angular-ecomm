@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { LocalizeService } from '../../services/localize.service';
 import { CartService } from '../../services/cart.service';
-import { Item } from '../../services/item.model'
+import { Item } from '../../services/item.model';
 
 
 
@@ -17,17 +17,17 @@ export class CartComponent implements OnInit {
   currencySelected: string;
   unitSelected: number;
   public constructor(
-    private _localizeService: LocalizeService,
-    private _cartData: CartService,
+    private localizeService: LocalizeService,
+    private cartData: CartService,
     private cd: ChangeDetectorRef,
     ) {
-    this._localizeService.currency$.subscribe((value) => {
+    this.localizeService.currency$.subscribe((value) => {
       this.currencySelected = value;
       }
     );
-    this._localizeService.unit$.subscribe((unit) => {
+    this.localizeService.unit$.subscribe((unit) => {
       this.unitSelected = unit;
-      if (this.dataSource) this.calculateTotal(this.unitSelected)
+      if (this.dataSource) { this.calculateTotal(this.unitSelected); }
       }
     );
   }
@@ -35,27 +35,27 @@ export class CartComponent implements OnInit {
   dataSource = new MatTableDataSource<Item>();
   selection = new SelectionModel<Item>(true, []);
   step = 0;
-  shipping: number; 
+  shipping: number;
   orderTotal: number;
   options: any[] = [
     {value: 0, viewValue: 'Standard -'},
     {value: 14.99, viewValue: 'Priority - '},
     {value: 24.99, viewValue: 'Expedited - '}
   ];
-  
+
   ngOnInit() {
-    this.connectCart()
+    this.connectCart();
     console.log('cart - init', this.cart);
     console.log('dataSource - init', this.dataSource.data);
     this.shipping = 0 * this.unitSelected;
-    if (this.dataSource) this.calculateTotal(this.unitSelected)
+    if (this.dataSource) { this.calculateTotal(this.unitSelected); }
   }
 
   connectCart() {
-    this._cartData.getProduct().subscribe(item => {
+    this.cartData.getProduct().subscribe(item => {
       if (item) {
         this.cart.push(item);
-        this.dataSource.data = this.cart
+        this.dataSource.data = this.cart;
         this.cd.detectChanges();
         console.log('cart - connect', this.cart);
         console.log('dataSource - connect', this.dataSource.data);
@@ -100,7 +100,7 @@ export class CartComponent implements OnInit {
     this.step--;
   }
 
-  calculateTotal(unit:number) {
+  calculateTotal(unit: number) {
     if (this.dataSource) {
       this.orderTotal = 0;
       let subTotal = 0;

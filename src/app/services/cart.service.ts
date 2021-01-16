@@ -12,7 +12,7 @@ export class CartService {
   constructor() {}
 
   addProduct(item) {
-    this.cartSource.next(item)
+    this.cartSource.next(item);
   }
 
   getProduct(): Observable<any> {
@@ -20,6 +20,6 @@ export class CartService {
   }
 
   clearCart() {
-    this.cartSource.next()
+    this.cartSource.next();
   }
 }

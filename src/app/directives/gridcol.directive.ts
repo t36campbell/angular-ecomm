@@ -10,7 +10,7 @@ export interface GridColumns {
   xl: number;
 }
 @Directive({
-  selector: '[gridCols]'
+  selector: '[appGridCols]'
 })
 export class GridcolDirective implements OnInit {
   private gridCols: GridColumns = {xs: 1, sm: 2, md: 4, lg: 6, xl: 8};
@@ -27,13 +27,13 @@ export class GridcolDirective implements OnInit {
   }
 
   public constructor(private grid: MatGridList, private breakpointObserver: BreakpointObserver) {
-    if(this.grid != null) {
+    if (this.grid != null) {
       this.grid.cols = this.gridCols.md;
     }
   }
 
   public ngOnInit(): void {
-    if(this.grid != null) {
+    if (this.grid != null) {
       this.grid.cols = this.gridCols.md;
     }
     this.breakpointObserver.observe([

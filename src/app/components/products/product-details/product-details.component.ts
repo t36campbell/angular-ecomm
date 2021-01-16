@@ -1,9 +1,9 @@
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'
-import { FirestoreService } from '../../../services/firestore.service'
+import { ActivatedRoute } from '@angular/router';
+import { FirestoreService } from '../../../services/firestore.service';
 import { CartService } from '../../../services/cart.service';
-import { Item } from '../../../services/item.model'
+import { Item } from '../../../services/item.model';
 
 @Component({
   selector: 'app-product-details',
@@ -14,10 +14,10 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly _firestore: FirestoreService,
-    private _cartData: CartService
+    private readonly firestore: FirestoreService,
+    private cartData: CartService
   ) {}
-  
+
   cart: Item[] = [];
   details;
   qty: number;
@@ -32,29 +32,29 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
     const docId: string = this.route.snapshot.paramMap.get('docId');
-    this.details = this._firestore
+    this.details = this.firestore
       .getElementDetails(docId)
       .subscribe(data => {
-        this.details = data
-      }); 
+        this.details = data;
+      });
     this.connectCart();
   }
 
   addItem(item, qty) {
-    let totalItems = this.cart.length + 1
-    let newItem = {
+    const totalItems = this.cart.length + 1;
+    const newItem = {
       pos: totalItems,
       name: item.element,
       price: item.atomicMass,
-      qty: qty,
+      qty,
       total: null
-    }
-    console.log('newitem', newItem)
-    this._cartData.addProduct(newItem)
+    };
+    console.log('newitem', newItem);
+    this.cartData.addProduct(newItem);
   }
 
   connectCart() {
-    this._cartData.getProduct().subscribe(item => {
+    this.cartData.getProduct().subscribe(item => {
       if (item) {
         this.cart.push(item);
         // this.cd.markForCheck();

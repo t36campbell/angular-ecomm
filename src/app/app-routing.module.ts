@@ -6,7 +6,7 @@ import { StoresComponent } from './components/stores/stores.component';
 
 import { AccountComponent } from './components/account/account.component';
 import { CartComponent } from './components/cart/cart.component';
-import { AuthGuard } from './auth.guard'
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
