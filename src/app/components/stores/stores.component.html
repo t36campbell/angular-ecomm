@@ -1,6 +1,6 @@
 <div class="grid-container">
-  <mat-grid-list cols="2" rowHeight="325px">
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
+  <mat-grid-list [gridCols] rowHeight="fit" class="grid-list">
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
       <mat-card class="dashboard-card">
         <mat-card-title>Search Store Locations</mat-card-title>
         <mat-card-content class="dashboard-card-content">
@@ -39,7 +39,7 @@
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
       <mat-card class="dashboard-card">
         <mat-card-title>Nearest Locations</mat-card-title>
         <mat-card-content>
@@ -76,7 +76,7 @@
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="2">
+    <mat-grid-tile [colspan]="6" [rowspan]="2">
       <mat-card class="dashboard-card">
         <mat-card-content>
           <agm-map

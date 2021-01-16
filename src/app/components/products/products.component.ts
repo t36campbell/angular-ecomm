@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { element } from 'protractor';
 import { FirestoreService } from '../../services/firestore.service';
 
 

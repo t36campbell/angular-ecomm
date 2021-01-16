@@ -3,6 +3,9 @@
   margin-top: 20px;
   background: #f5f5f5;
 }
+.grid-list {
+  height: 81vh;
+}
 .dashboard-card {
   position: absolute;
   top: 15px;
@@ -37,9 +40,6 @@ th.mat-sort-header-sorted {
   -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   -o-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-.actions {
-  margin-top: 60%;
 }
 .action-buttons {
   margin-left: -8px;
