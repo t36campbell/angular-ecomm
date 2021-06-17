@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   firebaseConfig: {
-    apiKey: "AIzaSyBCF61D4xeORu3OHhUt-BnlhmgiJ6FO8B4",
+    apiKey: "AIzaSyDn52H8pM-3lqNV8WPfcKo3Zmz8u-rsmjQ",
     authDomain: "angular-ecomm-8e330.firebaseapp.com",
     databaseURL: "https://angular-ecomm-8e330.firebaseio.com",
     projectId: "angular-ecomm-8e330",
@@ -11,5 +11,5 @@ export const environment = {
     measurementId: "G-BHVWT5G77Y"
   },
   agm: 'AIzaSyDluWhiZdf9jk4EUDQTHbYKL63-0P40Sfs',
-  youtube: 'AIzaSyBDIa4FPc-gttr-2_whuYKfvW8mEcpOUjM' , 
+  youtube: 'AIzaSyBDIa4FPc-gttr-2_whuYKfvW8mEcpOUjM' ,
 };
